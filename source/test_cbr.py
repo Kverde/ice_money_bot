@@ -1,7 +1,8 @@
-import unittest
 import datetime
+import unittest
 
-from cbr import Cbr
+from source.cbr import Cbr
+
 
 class TestCbr(unittest.TestCase):
     def test_getValuteDict(self):

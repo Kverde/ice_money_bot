@@ -2,9 +2,8 @@ import datetime
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-from setting import loadTelegramToken
-
-from cbr import Cbr
+from source.cbr import Cbr
+from source.setting import loadTelegramToken
 
 APP_ID = 'IceMoneyBot'
 
