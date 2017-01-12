@@ -1,11 +1,19 @@
 from datetime import datetime, timedelta
 
-
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+from lib import botan
+from lib.setting import loadTelegramToken
 from source.cbr import Cbr
-from source.setting import loadTelegramToken
+
+
+
+botan_token = 'ScFHssQQEz5REsqAdnQJ3Fv-HuW29ym'  # Token got from @botaniobot
+
+def botanTrack(message, event_name):
+    uid = message.from_user
+    message_dict = message.to_dict()
+    botan.track(botan_token, uid, message_dict, event_name)
 
 APP_ID = 'IceMoneyBot'
 
@@ -22,24 +30,30 @@ def sendHelp(bot, update):
     update.message.reply_text('При отправке любого сообщения вам будет возвращены курсы валют на текущую дату.')
     update.message.reply_text('Для получения курса на опредленную дату отправьте дату в формате "дд мм гггг", например "16 8 2015"')
 
+
+
 def cm_start(bot, update):
     sendHelp(bot, update)
     sendTodya(bot, update)
+    botanTrack(update.message, 'start')
 
 def cm_help(bot, update):
     sendHelp(bot, update)
+    botanTrack(update.message, 'help')
 
 def cm_yesterday(bot, update):
     sendYesteday(bot, update)
-
+    botanTrack(update.message, 'yesterday')
 
 def callb_text(bot, update):
     try:
         date = datetime.strptime(update.message.text, '%d %m %Y')
         print(date)
         update.message.reply_text(Cbr.getCource(date))
+        botanTrack(update.message, 'for_date')
     except Exception as e:
         sendTodya(bot, update)
+        botanTrack(update.message, 'text')
 
 updater = Updater(telegramToken)
 
