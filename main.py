@@ -8,7 +8,7 @@ from source.cbr import Cbr
 
 
 
-botan_token = 'ScFHssQQEz5REsqAdnQJ3Fv-HuW29ym'  # Token got from @botaniobot
+botan_token = 'dScFHssQQEz5REsqAdnQJ3Fv-HuW29ym'  # Token got from @botaniobot
 
 def botanTrack(message, event_name):
     uid = message.from_user
@@ -38,8 +38,12 @@ def cm_start(bot, update):
     botanTrack(update.message, 'start')
 
 def cm_help(bot, update):
-    sendHelp(bot, update)
-    botanTrack(update.message, 'help')
+    try:
+        print('command help')
+        sendHelp(bot, update)
+        botanTrack(update.message, 'help')
+    except Exception as e:
+        print(e)
 
 def cm_yesterday(bot, update):
     sendYesteday(bot, update)
