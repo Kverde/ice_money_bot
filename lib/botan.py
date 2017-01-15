@@ -21,7 +21,6 @@ def track(token, uid, message, name='Message'):
             data=json.dumps(message),
             headers={'Content-type': 'application/json'},
         )
-        print(r.json())
         return r.json()
     except requests.exceptions.Timeout:
         # set up for a retry, or continue in a retry loop
