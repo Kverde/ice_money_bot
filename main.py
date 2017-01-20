@@ -20,12 +20,16 @@ domain = Domain()
 
 
 def cm_start(bot, update):
-    domain.sendStart()
+    domain.sendStart(bot, update)
     botanTrack(update.message, 'start')
 
 def cm_help(bot, update):
     domain.sendHelp(bot, update)
     botanTrack(update.message, 'help')
+
+def cm_about(bot, update):
+    domain.sendAbout(bot, update)
+    botanTrack(update.message, 'about')
 
 def cm_yesterday(bot, update):
     domain.sendYesteday(bot, update)
@@ -39,7 +43,10 @@ updater = Updater(setting.telegram_token)
 
 updater.dispatcher.add_handler(CommandHandler('start', cm_start))
 updater.dispatcher.add_handler(CommandHandler('help', cm_help))
+updater.dispatcher.add_handler(CommandHandler('about', cm_about))
+
 updater.dispatcher.add_handler(CommandHandler('yesterday', cm_yesterday))
+
 updater.dispatcher.add_handler(MessageHandler(Filters.text, callb_text))
 
 updater.start_polling()

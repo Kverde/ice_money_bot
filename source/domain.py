@@ -30,4 +30,7 @@ class Domain():
         update.message.reply_text(
             'Для получения курса на опредленную дату отправьте дату в формате "дд мм гггг", например "16 8 2015"')
 
+    def sendAbout(self, bot, update):
+        update.message.reply_text(r'Для связи с разработчиком используйте Telegram @KonstantinShpilko, сайт http://way23.ru')
+
 
