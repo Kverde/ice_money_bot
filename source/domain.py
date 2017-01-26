@@ -3,6 +3,10 @@ from datetime import datetime, timedelta
 
 from source.cbr import Cbr
 
+about_text = '''Пожалуйста, оцените этого бота https://telegram.me/storebot?start=IceMoneyBot
+
+Для связи с разработчиком используйте Telegram @KonstantinShpilko, сайт http://way23.ru
+'''
 
 class Domain():
     def sendStart(self, bot, update):
@@ -31,6 +35,6 @@ class Domain():
             'Для получения курса на опредленную дату отправьте дату в формате "дд мм гггг", например "16 8 2015"')
 
     def sendAbout(self, bot, update):
-        update.message.reply_text(r'Для связи с разработчиком используйте Telegram @KonstantinShpilko, сайт http://way23.ru')
+        update.message.reply_text(about_text)
 
 

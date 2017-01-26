@@ -1,8 +1,11 @@
 Курс валют
 @IceMoneyBot
+http://telegram.me/IceMoneyBot
 
 Promo:
 Бот возвращает курс центрального банка для доллара и евро по отношению к рублю. Курс можно запросить на сегодня, вчера или любую дату. 
+
+http://way23.ru/wp-content/uploads/2017/01/logo-1.png
 
 
 Description:
