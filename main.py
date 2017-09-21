@@ -32,12 +32,18 @@ def cm_about(bot, update):
     botanTrack(update.message, 'about')
 
 def cm_yesterday(bot, update):
-    domain.sendYesteday(bot, update)
-    botanTrack(update.message, 'yesterday')
+    try:
+        domain.sendYesteday(bot, update)
+        botanTrack(update.message, 'yesterday')
+    except BaseException as e:
+        print(e)
 
 def callb_text(bot, update):
-    log_msg = domain.sendText(bot, update)
-    botanTrack(update.message, log_msg)
+    try:
+        log_msg = domain.sendText(bot, update)
+        botanTrack(update.message, log_msg)
+    except BaseException as e:
+        print(e)
 
 updater = Updater(setting.telegram_token)
 
